@@ -3,6 +3,7 @@ import paths
 import parts
 import maze
 import os
+
 clear = lambda: os.system("cls")
 
 
