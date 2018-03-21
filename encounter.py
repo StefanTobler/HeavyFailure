@@ -156,7 +156,7 @@ def throw():
 def grunt():
     hp = random.randint(15, 30)
     print("\nOh no you ran into a Symrite grunt! It has", hp, "health!")
-    attack = round(.5 * setskill.attackPoints - setskill.defensePoints * .2, 2)
+    attack = round(.5 * setskill.attackPoints - setskill.defensePoints * .2 * random.uniform(0, 1), 2)
     # Checks to make sure enemy does't deal negative damage and if does sets attack to 1
     if attack < 0:
         attack = 1
@@ -170,7 +170,7 @@ def grunt():
 def scout():
     hp = random.randint(10, 15)
     print("\nOh no you have run into a Symrite scout! It has", hp, "health!")
-    attack = round(.35 * setskill.attackPoints - setskill.defensePoints * .2, 2)
+    attack = round(.35 * setskill.attackPoints - setskill.defensePoints * .2 * random.uniform(0, 1), 2)
     if attack < 0:
         attack = 1
     defense = round(.1 * setskill.defensePoints, 2)
@@ -183,7 +183,7 @@ def scout():
 def tank():
     hp = random.randint(25, 50)
     print("\nOh no you have run into a Symrite tank! It has", hp, "health!")
-    attack = round(.85 * setskill.attackPoints - setskill.defensePoints * .2, 2)
+    attack = round(.85 * setskill.attackPoints - setskill.defensePoints * .2 * random.uniform(0, 1), 2)
     if attack < 0:
         attack = 1
     defense = round(.4 * setskill.defensePoints, 2)
@@ -196,7 +196,7 @@ def tank():
 def scorcher():
     hp = random.randint(20, 35)
     print("\nOh no you have run into a Symrite scorcher! It has", hp, "health!")
-    attack = round(.85 * setskill.attackPoints - setskill.defensePoints * .2, 2)
+    attack = round(.85 * setskill.attackPoints - setskill.defensePoints * .2 * random.uniform(0, 1), 2)
     if attack < 0:
         attack = 1
     defense = round(.0 * setskill.defensePoints, 2)
