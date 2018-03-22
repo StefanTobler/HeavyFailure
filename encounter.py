@@ -51,8 +51,8 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
         print("\nYou get to attack first!")
     else:
         health -= attack
-        round(health, 2)
-        print("\nThe", enemy, "got the drop on you and dealt", attack , "damage. Your health is now", health, end=".\n")
+        health = round(health, 2)
+        print("\nThe", enemy, "got the drop on you and dealt", attack , "damage. Your health is now", round(health, 2), end=".\n")
         hit.play()
 
     # Battle Phase begins
@@ -63,7 +63,7 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
         if val.lower() == "attack":
             if random.uniform(0, 1) > dodgeChance:
                 hp -= damage
-                round(hp, 2)
+                hp = round(hp, 2)
                 print("\nYou dealt", damage, "damage to the", enemy, end=".\n")
             else:
                 print("\nYour attack missed!")
@@ -72,7 +72,7 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
         elif val.lower() == "special" and sp > 0:
             if random.uniform(0, 1) > dodgeChance * 1.5:
                 hp -= special
-                round(hp, 2)
+                hp = round(hp, 2)
                 print("\nYou dealt", special,"damage to the", enemy, "with your special!")
                 sp -= 1
             else:
@@ -92,20 +92,20 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
         else:
             print("Not a valid move.")
         # Enemy turn to attack
-        if hp > 0 and(val.lower() == "attack" or val.lower() == "run" or (val.lower() == "special" and sp == 0)):
+        if hp > 0 and(val.lower() == "attack" or val.lower() == "run" or (val.lower() == "special" and sp > 0)):
             if random.uniform(0,1) > missChance:
                 # Determines whether enemy attack hits for a critical
                 if random.uniform(0,1) > .15:
                     health -= attack
-                    round(health, 2)
+                    health = round(health, 2)
                     if health > 0:
-                        print("The", enemy, "hit you for", attack, "damage. Your health is now", health, end=".\n")
+                        print("The", enemy, "hit you for", attack, "damage. Your health is now", round(health, 2), end=".\n")
                     else:
                         print("The", enemy, "hit you for", attack, "damage. Your health is now 0.")
                     hit.play()
                 else:
                     health -= attack * 1.5
-                    round(health, 2)
+                    health = round(health, 2)
                     if health > 0:
                         print("The", enemy, "got a critical hit, and did", round(attack * 1.5, 2), "damage. Your"
                               " health is now", health, end=".\n")
@@ -121,24 +121,15 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
 
     # Reward
     if val.lower() != "run" and health > 0:
-        x = random.randint(1, 6)
+        x = random.randint(1, 9)
         print("You have defeated", enemy, end=".\n")
-        if x == 1:
-            print('You have gained one attack point!')
-            setskill.attackPoints += 1
-        elif x == 2:
-            print("You have gained one defense point!")
-            setskill.defensePoints += 1
-        elif x == 3:
-            print("You have gained one special point!")
-            setskill.specialPoints += 1
-        elif x == 4:
+        if x <= 3:
             print("You have received full health!")
             health = 50
-        elif x == 5:
+        elif x <= 6:
             print("Your special points have been recovered!")
             sp = 5
-        elif x == 6:
+        elif x <= 9:
             print("The enemy dropped a titanium plate!")
             parts.titaniumPlates += 1
     elif health < 0:

@@ -2,10 +2,10 @@ import maze
 import paths
 
 
-titaniumPlates = 5
-heavyCore = True
-toolBox = True
-quantumTransmitter = True
+titaniumPlates = 0
+heavyCore = False
+toolBox = False
+quantumTransmitter = False
 
 
 # Prints the status of the parts
