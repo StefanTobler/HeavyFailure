@@ -13,6 +13,7 @@ clear = lambda: os.system("cls")
 running = True
 
 
+# When game is complete reward message
 def winning():
     clear()
     maze.rprint("You have made it off Symr and are headed to AD3!")
@@ -28,11 +29,16 @@ def winning():
     maze.enter("Press enter to roll credits.")
 
 
+# Main game menu
+# I should create a list instead of checking the input so that when they find the item the player cannot
+# go do the challenge again. Make a list containing all the menu items and delete them when the player
+# completes the zone.
 def menu():
     global running
     clear()
     while running:
         maze.rprint("Where would you like to go to search for parts for Heavy?")
+        # Checks if each part has not been found, if it has it removes it from the menu.
         if not parts.heavyCore:
             maze.rprint("> Runes")
         if not parts.quantumTransmitter:

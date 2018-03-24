@@ -117,15 +117,11 @@ while running:
     print("\n")
     enter()
     print("\n")
-    # ##################################
-    # # For testing purposes
-    # setskill.specialPoints = 10
-    # setskill.attackPoints = 10
-    # setskill.defensePoints = 10
-    # ##################################
+
     load()
     clear()
 
+    # Creates some story for the game
     rprint("You just woke up from a long slumber on Heavy, a solo space shuttle mission that was bound for Alpha "
            "3-Delta Zone, approximately 15au from Earth.")
     enter()

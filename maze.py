@@ -16,6 +16,7 @@ def enter(x="Press enter to continue."):
         enter = input(x)
 
 
+# Rolling print
 def rprint(x, stop="\n"):
     speed = settings.updateSpeed()
     for i in x:
@@ -56,6 +57,7 @@ def rune():
             except IndexError:
                 pass
             direction = input("Which direction would you like to go? Left or right? ")
+            # Checks to see if direction is correct and adds it to the player location list
             if direction.lower().strip() == i:
                 clear()
                 step += 1

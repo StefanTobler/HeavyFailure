@@ -33,6 +33,10 @@ def status():
 
 
 # Combat Phase
+# hp = enemy health
+# health = player health
+# missChance is the probability that the player's attack misses the enemy
+# dodgeChance is the probability that the player dodges an enemy attack
 def battle(enemy, hp, attack, defense, missChance, dodgeChance):
     global health, sp
     val = ""
@@ -92,10 +96,11 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
         else:
             print("Not a valid move.")
         # Enemy turn to attack
+        # If statement will allow player to bypass the enemy attack id they are using their last special attack
         if hp > 0 and(val.lower() == "attack" or val.lower() == "run" or (val.lower() == "special" and sp > 0)):
             if random.uniform(0,1) > missChance:
                 # Determines whether enemy attack hits for a critical
-                if random.uniform(0,1) > .15:
+                if random.uniform(0,1) > .15:  # If true attack is not a critical
                     health -= attack
                     health = round(health, 2)
                     if health > 0:
@@ -103,6 +108,7 @@ def battle(enemy, hp, attack, defense, missChance, dodgeChance):
                     else:
                         print("The", enemy, "hit you for", attack, "damage. Your health is now 0.")
                     hit.play()
+                # Critical hit
                 else:
                     health -= attack * 1.5
                     health = round(health, 2)
@@ -148,7 +154,7 @@ def grunt():
     hp = random.randint(15, 30)
     print("\nOh no you ran into a Symrite grunt! It has", hp, "health!")
     attack = round(.5 * setskill.attackPoints - setskill.defensePoints * .2 * random.uniform(0, 1), 2)
-    # Checks to make sure enemy does't deal negative damage and if does sets attack to 1
+    # Checks to make sure enemy doesn't deal negative damage and if does sets attack to 1
     if attack < 0:
         attack = 1
     defense = round(.2 * setskill.defensePoints, 2)

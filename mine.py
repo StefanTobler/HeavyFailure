@@ -7,9 +7,11 @@ import os
 clear = lambda: os.system("cls")
 
 
+# Simple word scramble puzzle solution is HELP
 def puzzle():
     clear()
     solution = "help"
+    # Intro into the mine
     maze.rprint("You decided to go down into the mine, it looks like there are 4 shafts which one would you like to go "
                 "down?")
     val = input("> 1\n> 2\n> 3\n> 4\n")
@@ -36,7 +38,7 @@ def puzzle():
     maze.rprint("The writing on the walls may have something to do with a puzzle."
                 " Maybe if you figure out what word they spell something might happen.")
     maze.enter()
-
+    # Player has to go to every shaft and then guess the scrambled word
     while val.lower() != solution:
         clear()
         maze.rprint("Which way would you like to go or try and enter the solution.")

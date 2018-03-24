@@ -10,7 +10,9 @@ import time
 clear = lambda: os.system("cls")
 
 
+# Simple algebra problem, I wish I could make it more interactive
 def hacking():
+    # Creates 2 numbers num2 can be anywhere between 1 and 5 times larger than num1
     num1 = random.randint(1, 100)
     num2 = random.randint(1, 5) * num1
     sum = num1 + num2

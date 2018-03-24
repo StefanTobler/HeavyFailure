@@ -5,6 +5,7 @@ defensePoints = 0
 specialPoints = 0
 
 
+# Prints skills
 def printskills():
     print("\nAttack:", attackPoints, "\nDefense:", defensePoints, "\nSpecial:", specialPoints)
 
